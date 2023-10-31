@@ -41,7 +41,11 @@ JadwalMatkulController.create = async(req, res) => {
 }
 
 JadwalMatkulController.getAll = async(req, res) => {
-    const getMatkul = await JadwalMatkul.findAll()
+    const getMatkul = await MataKuliah.findAll({
+        include: [{
+            model: JadwalMatkul,
+        }],
+    })
     res.json({
         data: getMatkul
     })
